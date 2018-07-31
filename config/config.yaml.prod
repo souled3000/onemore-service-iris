@@ -1,0 +1,15 @@
+# 配置文件
+# config:
+appname: oms-service-iris
+http_port: :8080
+mysql:
+  host: rm-2zeh3jfm7fzle8605.mysql.rds.aliyuncs.com
+  port: 3306
+  user_name: onemore
+  password: Dea*7wjdha
+  db_name: omsdb
+redis:
+  addr: 172.17.65.184:6379
+  pwd: null
+  maxActive: 200
+  idle: 60
