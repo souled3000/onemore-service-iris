@@ -26,6 +26,9 @@ type Server struct {
 func (this *Server) Register(name string, ctl interface{}) {
 	t := reflect.TypeOf(ctl)
 	path := t.Elem().PkgPath()
-	path = path[strings.Index(path, "controllers")+len("controllers"):]
-	mvc.New(this.App.Party(path + "/" + name)).Handle(ctl)
+	chips := strings.Split(path, "/")
+	chips = chips[2:len(chips)]
+	chips = append(chips, name)
+	path = strings.Join(chips, "/")
+	mvc.New(this.App.Party(path)).Handle(ctl)
 }

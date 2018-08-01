@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/kataras/iris"
 	"onemore-service-iris/config"
-	_ "onemore-service-iris/controllers/api/v2/onemore"
+	_ "onemore-service-iris/controllers"
+	_ "onemore-service-iris/misc"
 	"onemore-service-iris/server"
-	_ "onemore-service-iris/utils"
 )
 
 func main() {

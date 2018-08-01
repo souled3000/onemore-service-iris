@@ -21,11 +21,13 @@ type Redis struct {
 }
 
 type Mysql struct {
-	Host     string `yaml:"host,omitempty"`
-	Port     string `yaml:"port,omitempty"`
-	UserName string `yaml:"user_name,omitempty"`
-	Password string `yaml:"password,omitempty"`
-	DBName   string `yaml:"db_name,omitempty"`
+	Host      string `yaml:"host,omitempty"`
+	Port      string `yaml:"port,omitempty"`
+	UserName  string `yaml:"user_name,omitempty"`
+	Password  string `yaml:"password,omitempty"`
+	DBName    string `yaml:"db_name,omitempty"`
+	IdleNu    int    `yaml:"idle_nu,omitempty"`
+	MaxActive int    `yaml:"max_active,omitempty"`
 }
 
 var Conf Config

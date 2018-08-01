@@ -8,6 +8,8 @@ mysql:
   user_name: root
   password: 123456
   db_name: omsdb
+  idle_nu: 100
+  max_active: 1000
 redis:
   addr: 192.168.1.15:6379
   pwd: null

@@ -1,13 +1,14 @@
-package utils
+package misc
 
 import (
+	"fmt"
 	"github.com/garyburd/redigo/redis"
 	"onemore-service-iris/config"
 	"time"
 )
 
 func init() {
-
+	fmt.Println("Redis Init:", InitRedix())
 }
 
 //redis连接池
