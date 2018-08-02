@@ -4,6 +4,21 @@ cd your project/config
 cp config.yaml.local config.yaml
 ```
 
+=======
+## govendor
+```
+govendor init
+govendor add +external
+```
+## 添加包
+```
+govendor add +outside
+```
+## 同步包
+```
+govendor sync
+```
+
 ##controllers使用规范
 
 1.使用目录结构作为根路径 如：controllers/api/v2/onemore/PintCtl 它的根是/api/v2/onemore

@@ -1,6 +1,6 @@
 # 配置文件
 # config:
-appname: oms-service-iris
+appname: onemore-service-iris
 http_port: :8080
 mysql:
   host: rm-2zeh3jfm7fzle8605.mysql.rds.aliyuncs.com

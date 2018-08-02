@@ -1,7 +1,7 @@
 # 配置文件
 # config:
-appname: oms-service-iris
-http_port: :8084
+appname: onemore-service-iris
+http_port: :8080
 mysql:
   host: 192.168.1.22
   port: 32306
