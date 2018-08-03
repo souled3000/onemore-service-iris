@@ -1,9 +1,8 @@
-package misc
+package utils
 
 import (
 	"fmt"
 	"github.com/garyburd/redigo/redis"
-	"onemore-service-iris/config"
 	"time"
 )
 
@@ -35,15 +34,15 @@ func InitRedix() error {
 func newPool() *redis.Pool {
 	return &redis.Pool{
 		MaxIdle:     5,
-		MaxActive:   config.Conf.Redis.MaxActive,
-		IdleTimeout: time.Second * time.Duration(config.Conf.Redis.Idle),
+		MaxActive:   Conf.Redis.MaxActive,
+		IdleTimeout: time.Second * time.Duration(Conf.Redis.Idle),
 		Dial: func() (redis.Conn, error) {
-			c, err := redis.Dial("tcp", config.Conf.Redis.Addr)
+			c, err := redis.Dial("tcp", Conf.Redis.Addr)
 			if err != nil {
 				return nil, err
 			}
-			if config.Conf.Redis.Pwd != "" {
-				if _, err := c.Do("AUTH", config.Conf.Redis.Pwd); err != nil {
+			if Conf.Redis.Pwd != "" {
+				if _, err := c.Do("AUTH", Conf.Redis.Pwd); err != nil {
 					c.Close()
 					return nil, err
 				}

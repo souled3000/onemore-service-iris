@@ -3,7 +3,6 @@ package onemore
 import (
 	"fmt"
 	"onemore-service-iris/controllers/base"
-	"onemore-service-iris/misc"
 	"onemore-service-iris/server"
 	"onemore-service-iris/services"
 )
@@ -26,22 +25,21 @@ func (c *VersionCtl) PostSave() interface{} {
 	hv := c.Ctx.FormValue("html_version")
 	hu := c.Ctx.FormValue("html_url")
 	fmt.Println(tp, at, hv, hu)
-	//	e := services.SaveVersion(tp, at, hv, hu)
-	//	if e == nil {
-	//		return misc.GenRt("success", 0, "", "保存成功")
-	//	} else {
-	//		return misc.GenRt("error", 1003, "", "保存失败")
-	//	}
-	e := services.SaveVersion2DB(tp, at, hv, hu)
+	e := services.SaveVersion(tp, at, hv, hu)
+	if e != nil {
+		fmt.Println("Fail to  save version into redis.", e)
+	}
+	e = services.SaveVersion2DB(tp, at, hv, hu)
 	if e == nil {
-		return misc.GenRt("success", 0, "", "保存成功")
+		return c.Respond("success", 0, "", "保存成功")
 	} else {
-		return misc.GenRt("error", 1003, "", "保存失败")
+		fmt.Println("Fail to  save version into db.", e)
+		return c.Respond("error", 1003, "", "保存失败")
 	}
 }
 
 /**
-* curl "localhost:8080/api/v2/onemore/version/getnew?type=11&app_type=22"
+*curl "localhost:8080/api/v2/onemore/version/getnew?type=11&app_type=22"
 **/
 func (c *VersionCtl) GetGetnew() interface{} {
 	t := c.Ctx.URLParam("type")
@@ -49,8 +47,8 @@ func (c *VersionCtl) GetGetnew() interface{} {
 	fmt.Println(t, at)
 	rt, er := services.GetVersion(t, at)
 	if er == nil {
-		return misc.GenRt("success", 0, rt, "获取成功")
+		return c.Respond("success", 0, rt, "获取成功")
 	} else {
-		return misc.GenRt("error", 1005, nil, "获取失败")
+		return c.Respond("error", 1005, nil, "获取失败")
 	}
 }
