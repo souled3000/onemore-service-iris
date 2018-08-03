@@ -58,11 +58,3 @@ func newPool() *redis.Pool {
 		},
 	}
 }
-
-func usecase() {
-	//从redis连接池中获取一个连接
-	r := Redix.Get()
-	//把连接还给连接池
-	defer r.Close()
-	//TODO do your business
-}
